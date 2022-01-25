@@ -1,8 +1,8 @@
-let lat
-let lon
+    let lat
+    let lon
 
 function initialize(x, y) {
-    var map = L.map('map', { tap: false }).setView([lat, lon], 15.5);
+    var map = L.map('map', { tap: false }).setView([48.660509, 6.155727], 15.5);
 
     var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
