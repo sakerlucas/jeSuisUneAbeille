@@ -7,6 +7,9 @@ var indexRouter = require('./routes/index');
 var mapRouter = require('./routes/map');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
+var gameRouter = require('./routes/game');
+var mapGameRouter = require('./routes/mapGame');
+var infosRouter = require('./routes/infos');
 
 var app = express();
 
@@ -20,5 +23,8 @@ app.use('/', indexRouter);
 app.use('/map', mapRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/game', gameRouter);
+app.use('/mapGame', mapGameRouter);
+app.use('/infos', infosRouter);
 
 module.exports = app;

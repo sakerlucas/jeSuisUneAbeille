@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
           if (error) {
               throw error
           } else {
-              res.send('Enregistré')
+            res.status(200).sendFile(path.resolve(__dirname + "/../public/login.html"))
           }
       })
 
