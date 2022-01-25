@@ -9,12 +9,13 @@ router.get('/', function(req, res, next) {
   res.status(200).sendFile(path.resolve(__dirname + "/../public/login.html"))
 });
 
-router.post('/login', (req, res) => {
+router.post('/', (req, res) => {
 
   let mail = req.body.mail
   let mdp = req.body.mdp
 
-  sql.query('SELECT mail FROM utilisateur WHERE pseudo = ?', [mail], (err, result) => {
+  sql.query('SELECT * FROM utilisateur WHERE mail = ?', [mail], (err, result) => {
+    console.log(result);
       if (err) throw err
 
       if ((result.length) && (bcrypt.compareSync(mdp, result[0].mdp)) && (mail == result[0].mail)) {
