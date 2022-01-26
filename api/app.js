@@ -10,6 +10,7 @@ var registerRouter = require('./routes/register');
 var gameRouter = require('./routes/game');
 var mapGameRouter = require('./routes/mapGame');
 var infosRouter = require('./routes/infos');
+var plantsRouter = require('./routes/plants');
 
 var app = express();
 
@@ -26,5 +27,6 @@ app.use('/register', registerRouter);
 app.use('/game', gameRouter);
 app.use('/mapGame', mapGameRouter);
 app.use('/infos', infosRouter);
+app.use('/plants', plantsRouter);
 
 module.exports = app;

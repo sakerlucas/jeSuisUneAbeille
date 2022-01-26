@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +7,7 @@
   <title>JeSuisUneAbeille</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin="" />
-  <title>JeSuisUneAbeille</title>
 </head>
-
 <body>
   <nav class="nav bg-light">
     <h4 class="mt-1 ms-1">JeSuisUneAbeille</h4>
@@ -23,14 +17,10 @@
     <a class="nav-link text-warning" href="/plants">Plants</a>
     <a class="nav-link text-red" href="/">Exit</a>
   </nav>
-  <h1>Game Page</h1>
-  <div id="map" class="container border rounded w-75 h-75 mt-5"></div>
+  <h1>Plants</h1>
 
-  <script src="/javascripts/gestionMapGame.js"></script>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-</body>
-</body>
+  <div id="plantes" class="container bg-light border rounded p-2"></div>
 
+  <script src="/javascripts/gestionPlants.js"></script>
+</body>
 </html>
