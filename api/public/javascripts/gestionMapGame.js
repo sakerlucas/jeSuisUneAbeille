@@ -54,7 +54,16 @@ function initialize(x, y) {
     map.addLayer(osmLayer);
 }
 
+function btnReload(){
+    document.getElementById('btnReload').addEventListener('click', (evt) => {
+        evt.preventDefault()
+        window.location.reload()
+    })
+}
+
 window.onload = () => {
+
+    btnReload()
 
     fetch(`http://ip-api.com/json/?fields=61439`)
         .then(response => response.json())
