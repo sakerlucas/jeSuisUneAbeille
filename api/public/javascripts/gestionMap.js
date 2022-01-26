@@ -1,7 +1,15 @@
 function initialize() {
-    var map = L.map('map', { tap: false }).setView([48.660509, 6.155727], 15.5); // LIGNE 18
+    var map = L.map('map', { tap: false }).setView([48.660509, 6.155727], 15.5);
 
-    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { // LIGNE 20
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.boxZoom.disable();
+    map.keyboard.disable();
+    if (map.tap) map.tap.disable();
+
+    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
     });
 
@@ -34,7 +42,7 @@ function initialize() {
     L.marker([48.660293, 6.158694], { icon: fleur }).addTo(map).bindPopup(
         'Arbre'
     );
-    
+
     L.marker([48.660676, 6.155261], { icon: ruche }).addTo(map).bindPopup(
         'Ruche'
     );
