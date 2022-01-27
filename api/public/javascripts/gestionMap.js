@@ -1,5 +1,5 @@
 function initialize() {
-    var map = L.map('map', { tap: false }).setView([48.660509, 6.155727], 15.5);
+    var map = L.map('map', { tap: false }).setView([48.660509, 6.155727], 16);
 
     map.dragging.disable();
     map.touchZoom.disable();
