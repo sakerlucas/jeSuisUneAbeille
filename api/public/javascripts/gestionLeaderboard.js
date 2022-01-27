@@ -1,8 +1,26 @@
 function afficherLeaderboard(data) {
     for (let i = 0; i < data.length; i++) {
+        let color = ''
+
+        switch (i) {
+            case 0:
+                color = 'text-gold'
+                break;
+
+            case 1:
+                color = 'text-silver'
+                break;
+
+            case 2:
+                color = 'text-bronze'
+                break;
+        }
+
         document.getElementById('leaderboard').innerHTML += `
-            <strong>${i+1}.</strong> ${data[i].bestScore}pts - ${data[i].nom}
-            <hr/>
+            <div class="${color}">
+                <strong>${i + 1}.</strong> ${data[i].bestScore}pts - ${data[i].nom}
+                <hr/>
+            </div>
         `
 
     }
