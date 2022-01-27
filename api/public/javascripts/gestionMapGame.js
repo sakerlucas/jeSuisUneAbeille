@@ -44,7 +44,7 @@ function initialize(x, y) {
     );
 
     L.marker([48.660293, 6.158694], { icon: fleur }).addTo(map).bindPopup(
-        'Arbre'
+        'Tulipe'
     );
 
     L.marker([48.660676, 6.155261], { icon: ruche }).addTo(map).bindPopup(
@@ -75,4 +75,15 @@ window.onload = () => {
         })
         .catch(err => console.log(err))
 
+        fetch('http://localhost:3000/plants/listPlants', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then((results) => {
+                console.log(results)
+            })
+            .catch(err => console.log(err))
 }
