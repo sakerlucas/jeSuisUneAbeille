@@ -1,5 +1,5 @@
-    let lat
-    let lon
+let lat
+let lon
 
 function initialize(x, y) {
     var map = L.map('map', { tap: false }).setView([48.660509, 6.155727], 15.5);
@@ -8,13 +8,13 @@ function initialize(x, y) {
         attribution: '© OpenStreetMap contributors',
     });
 
-    const fleur = L.icon({
-        iconUrl: '/images/fleur.png',
+    const ruche = L.icon({
+        iconUrl: '/images/ruche.png',
         iconSize: [24, 24],
     });
 
-    const ruche = L.icon({
-        iconUrl: '/images/ruche.png',
+    const fleur = L.icon({
+        iconUrl: '/images/fleur.png',
         iconSize: [24, 24],
     });
 
@@ -27,34 +27,34 @@ function initialize(x, y) {
         'Vous êtes ici !'
     );
 
-    L.marker([48.661669, 6.156137], { icon: fleur }).addTo(map).bindPopup(
-        'Rose'
-    );
-
-    L.marker([48.660436, 6.153093], { icon: fleur }).addTo(map).bindPopup(
-        'Tulipe'
-    );
-
-    L.marker([48.658593, 6.156025], { icon: fleur }).addTo(map).bindPopup(
-        'Cactus'
-    );
-
-    L.marker([48.662841, 6.157025], { icon: fleur }).addTo(map).bindPopup(
-        'Buisson'
-    );
-
-    L.marker([48.660293, 6.158694], { icon: fleur }).addTo(map).bindPopup(
-        'Tulipe'
-    );
-
     L.marker([48.660676, 6.155261], { icon: ruche }).addTo(map).bindPopup(
-        'Ruche'
+      'Ruche'
     );
+
+    fetch('http://localhost:3000/plants/listPlants', {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => response.json())
+        .then((results) => {
+            for (let i = 0; i < results.length; i++) {
+                L.marker([results[i].lat, results[i].lon], { icon: fleur }).addTo(map).bindPopup(
+                    `
+                    <strong>${results[i].nom}</strong>
+                    <br/>
+                    <img src="${results[i].image}" alt="logo" width="50" height="50" class="border rounded">
+                    `
+                );
+            }
+        })
+        .catch(err => console.log(err))
 
     map.addLayer(osmLayer);
 }
 
-function btnReload(){
+function btnReload() {
     document.getElementById('btnReload').addEventListener('click', (evt) => {
         evt.preventDefault()
         window.location.reload()
@@ -74,16 +74,4 @@ window.onload = () => {
             initialize(lat, lon)
         })
         .catch(err => console.log(err))
-
-        fetch('http://localhost:3000/plants/listPlants', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(response => response.json())
-            .then((results) => {
-                console.log(results)
-            })
-            .catch(err => console.log(err))
 }
